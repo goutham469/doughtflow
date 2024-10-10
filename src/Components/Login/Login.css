@@ -1,0 +1,8 @@
+.login-user{
+    width: 300px;
+    background-color: var(--background-color-primary);
+    border-radius: 20px;
+    padding: 10px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}

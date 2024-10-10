@@ -1,0 +1,43 @@
+.main-tab{
+    display: flex;
+    justify-content: space-around;
+}
+.output-console{
+    background-color: var(--background-color-primary);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 45vw;
+
+    height: 70vh;
+    overflow-y: scroll;
+}
+.new-post-title{
+    font-size: 24px;
+    max-width: 500px;
+
+}
+.new-post-bannerImage{
+    width: 300px;
+}
+.editor{
+    background-color: var(--background-color-primary);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 45vw;
+}
+.copy-code-button {
+    position: absolute;
+    top: 10px; /* Aligns to the top */
+    right: 10px; /* Aligns to the right */
+    background-color: #ffffff; /* Adjust button styling */
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.body-parser{
+    color: var(--text-color);
+}

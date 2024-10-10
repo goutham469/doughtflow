@@ -11,3 +11,44 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+:root {
+  --background-color: #ffffff; /* Light mode */
+  --text-color: #000000;
+  --primary-color: #007bff;
+  --background-color-primary:#cccccc;
+  /* Add other variables as needed */
+}
+
+[data-theme="dark"] {
+  --background-color: #000000; /* Dark mode */
+  --background-color-primary:#252525;
+  --text-color: #ffffff;
+  --primary-color: #1e90ff;
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 8px;  /* Width for vertical scrollbars */
+  height: 4px; /* Height for horizontal scrollbars */
+}
+
+/* Track (the background of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
