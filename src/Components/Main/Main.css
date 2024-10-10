@@ -1,10 +1,14 @@
 .main-body{
     background-color: var(--background-color);
     color: var(--text-color);
+
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .main-body-child{
     position: relative;
-    width: 600px;
+    width: 450px;
     height: 500px;
     overflow-y: hidden;
 
@@ -54,4 +58,23 @@
 }
 .complete-post-back-button:hover{
     background-color: var(--background-color-primary);
+}
+.tech-tag-parser{
+    background-color: var(--background-color);
+    margin: 3px;
+    padding: 4px;
+    font-size: 12px;
+    border-radius: 15px;
+}
+.main-tech-tag-parser{
+    border: 1px solid var(--text-color);
+    margin: 2px;
+    padding: 2.5px;
+    font-size: 13px;
+    border-radius: 15px;
+
+    cursor: pointer;
+}
+.main-tech-tag-parser:hover{
+    background-color: var(--background-color);
 }

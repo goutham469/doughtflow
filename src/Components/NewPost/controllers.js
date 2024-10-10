@@ -28,11 +28,13 @@ export function BodyParser({post:post})
                         :
                         item.type == 'img' ?
                         <div>
-                            <img 
-                            src={item.value} 
-                            className='new-post-image'
-                            width="300px"
-                            />
+                            <center>
+                                <img 
+                                src={item.value} 
+                                className='new-post-image'
+                                width="300px"
+                                />
+                            </center>
                             <br/>
                         </div>
                         :
@@ -113,7 +115,6 @@ export async function addImage(event)
     {
         let formData = new FormData();
         formData.append("photo",ImageFile);
-        // console.log("formData object : ",formData)
 
         try
         {
@@ -137,7 +138,6 @@ export async function addImage(event)
             else
             {
                 alert('image upload failed')
-                // console.log(response)
                 return
             }
         }

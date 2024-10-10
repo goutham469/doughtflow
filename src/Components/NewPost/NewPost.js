@@ -4,10 +4,10 @@ import { BodyParser,addImage,ToolBar, send_post } from './controllers'
 import { Editor } from './editor'
 import Notification from '../../Utils/ProgressBar'
 import { useNavigate } from 'react-router-dom'
+import { TechTags } from '../Utils'
 
 function NewPost() {
     const [post,setPost] = useState({
-        stage:0,
         title:'',
         bannerImage:'',
         body:[],
@@ -32,8 +32,14 @@ function NewPost() {
         setBodyChoose(0);
         setPost(prevData=>({...prevData , body : [...prevData.body , data]}))
     }
+    function handler(tags)
+    {
+        setPost(prevData=>({...prevData , technologies:tags}))
+        console.log(post)
+    }
     const style={
-        button:{backgroundColor:"green",border:"none",borderRadius:"5px",padding:"5px",margin:"10px",cursor:"pointer",color:"white",fontWeight:"500"}
+        button:{backgroundColor:"green",border:"none",borderRadius:"5px",padding:"5px",margin:"10px",cursor:"pointer",color:"white",fontWeight:"500"},
+        textarea:{padding:"10px",borderRadius:"10px"}
     }
 
     useEffect(()=>{
@@ -53,6 +59,11 @@ function NewPost() {
                 <img src={post.bannerImage} className='new-post-bannerImage'/><br/>
                 <b className='new-post-title'>{post.title}</b>
                 <BodyParser post={post.body}/>
+                <div className='tags-parser'>
+                    {
+                        post.technologies.map(tag=><label className='tech-tag-parser'>{tag}</label>)
+                    }
+                </div>
             </div>
             <div className='editor'>
                 <b>Editor</b><br/><br/>
@@ -60,15 +71,17 @@ function NewPost() {
                     state == 0 ?
                     <div>
                         <b>Add a Title</b><br/>
-                        <textarea style={{width:"300px",height:"100px",fontSize:"20px"}} onChange={(event)=>setPost(prevData=>({...prevData, title:event.target.value}))}/>
+                        <textarea style={{width:"300px",height:"100px",fontSize:"20px",padding:"10px",borderRadius:"5px"}} onChange={(event)=>setPost(prevData=>({...prevData, title:event.target.value}))}/>
                         
                         <br/><br/>
                         <b>Upload a Banner Image</b><br/>
-                        <input type='file' accept='image/*' onChange={(event)=>upload_image(event)}/>
+                        <input style={{borderRadius:"10px",border:"1px solid white"}} type='file' accept='image/*' onChange={(event)=>upload_image(event)}/>
                         <br/>
                         <label>or</label>
                         <br/>
-                        <input placeholder='paste a link here' onChange={(event)=>{setPost(prevData=>({...prevData , bannerImage:event.target.value}))}}/>
+                        <input style={{borderRadius:"5px",width:"300px",fontSize:"14px",padding:"5px"}} placeholder='paste a link here' onChange={(event)=>{setPost(prevData=>({...prevData , bannerImage:event.target.value}))}}/>
+
+                        <TechTags handler={handler}/>
 
                         <br/>
                         <button style={style.button} onClick={(event)=>setState(1)}>Next</button>
@@ -99,6 +112,7 @@ function NewPost() {
                             }>SUBMIT</button>
                     </div>
                 }
+                
             </div>
         </div>
         {notification && (

@@ -40,4 +40,6 @@
 }
 .body-parser{
     color: var(--text-color);
+    text-align: left;
+    padding: 10px;
 }

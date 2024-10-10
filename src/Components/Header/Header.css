@@ -24,7 +24,7 @@
 }
 .toggle-theme-icon{
     position: relative;
-    top: 5px;
+    top: 10px;
     cursor: pointer;
 }
 .profile-button{
@@ -44,4 +44,17 @@
     position: relative;
     right: 3px;
     top: 2px;
+}
+.new-post-button{
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
+    height: 25px;
+    padding: 2px;
+
+    cursor: pointer;
+}
+.new-post-button:hover{
+    background-color: var(--background-color-primary);
+    color: var(--primary-color);
 }

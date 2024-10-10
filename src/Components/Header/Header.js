@@ -7,7 +7,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-function Header() {
+function Header({queryHandler}) {
   const [searchQuery , setSearchQuery] = useState();
   const [theme,setTheme] = useState(localStorage.getItem('theme'))
   const navigate = useNavigate();
@@ -39,7 +39,10 @@ function Header() {
                 className='search-input'
                 type='text' 
                 placeholder='search any thing'
-                onChange={(event)=>setSearchQuery(event.target.value)}
+                onChange={(event)=>{
+                  // setSearchQuery(event.target.value)
+                  queryHandler(event.target.value)
+                }}
             />
         </form>
 
@@ -68,7 +71,7 @@ function Header() {
               <IoMoonOutline onClick={()=>toggleTheme("light")} />
             }
           </span>
-          <label onClick={()=>navigate('/new')}>new post</label>
+          <label className='new-post-button' onClick={()=>navigate('/new')}>new post</label>
         </div>
 
     </header>

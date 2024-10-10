@@ -1,0 +1,40 @@
+.tech-tags-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .tags-list {
+    width: 45%;
+  }
+  
+  h3 {
+    text-align: center;
+  }
+  
+  .available-tags, .selected-tags {
+    min-height: 50px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    background-color: #007bff;
+    color: white;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 5px;
+    cursor: grab;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .tag:hover {
+    background-color: #0056b3;
+  }
+  

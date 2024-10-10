@@ -1,14 +1,19 @@
 import React from 'react'
+import { useState } from 'react';
 import './Login.css'
 import { GoogleOAuthProvider,GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import Images from '../Images';
+import Notification from '../../Utils/ProgressBar';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const [notification, setNotification] = useState(null);
+  const navigate = useNavigate();
+
   async function success(response)
   {
     response = jwtDecode(response.credential)
-    // console.log(response)
 
     let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/users/login`,{
       method:"POST",
@@ -20,20 +25,28 @@ function Login() {
     })
     data = await data.json()
 
-    // console.log(data)
     if(data.acknowledged)
     {
       localStorage.setItem('email',response.email)
+      setNotification({ message: 'Login success', color: 'green' });
+      setTimeout(()=>{
+        navigate('/')
+      },3000)
+
     }
     else
     {
       if(data.message)
       {
         localStorage.setItem('email',response.email)
+        setNotification({ message: 'Login success', color: 'green' });
+        setTimeout(()=>{
+          navigate('/')
+        },3000)
       }
       else
       {
-        alert("some thing gone wrong !")
+        setNotification({ message: 'Login failed', color: 'red' });
       }
     }
   }
@@ -49,6 +62,8 @@ function Login() {
             <button onClick={(event)=>{
               event.preventDefault();
               localStorage.removeItem('email')
+              setNotification({ message: '"Logout" success', color: 'green' });
+
             }}>logout</button>
           </div>
           :
@@ -72,6 +87,14 @@ function Login() {
           </div>
         }
       </div>
+      {
+        notification && (
+        <Notification 
+          message={notification.message} 
+          color={notification.color}
+          onClose={() => setNotification(null)} 
+        />
+      )}
     </center>
   )
 }

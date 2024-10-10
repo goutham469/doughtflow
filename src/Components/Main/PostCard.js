@@ -23,8 +23,13 @@ function PostCard() {
             post.bannerImage&&<img src={post.bannerImage}/>
         }
         </center>
-        <h1>{post.title}</h1>
+        <center><h1 style={{color:"brown"}}>{post.title}</h1></center>
         <BodyParser post={post.body}/>
+        <div className='tags-parser'>
+          {
+            post.technologies.map(tag=><label className='tech-tag-parser'>{tag}</label>)
+          }
+        </div>
     </div>
   )
 }
