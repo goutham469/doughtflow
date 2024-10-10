@@ -18,8 +18,10 @@ app.use(exp.json()) // to read req data
 app.use(cors())
 
 // mongoDB setup
+console.log(process.env.MONGO_DB_URL)
+
 mclient.connect(process.env.MONGO_DB_URL).then(client=>{
-    const DB = client.db('stackoverflow')
+    const DB = client.db('doughtflow')
 
     const usersCollection = DB.collection('users')
     const postsCollection = DB.collection('posts')
