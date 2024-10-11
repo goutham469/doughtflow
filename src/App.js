@@ -7,15 +7,25 @@ import Login from './Components/Login/Login';
 import NewPost from './Components/NewPost/NewPost';
 import PostCard from './Components/Main/PostCard';
 import Master from './Components/Master/Master';
+import Notification from './Utils/ProgressBar';
 
 function App() {
   const [websiteCount , setWebsiteCount] = useState()
+  const [notification, setNotification] = useState(null);
 
   async function updateServerCount()
   {
-       let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/client`)
-       data = await data.json()
-       setWebsiteCount(data.websiteCalls)
+       try
+       {
+        let data = await fetch(`${process.env.REACT_APP_SERVER_BASE_URL}/client`)
+        data = await data.json()
+        setWebsiteCount(data.websiteCalls)
+       }
+       catch(err)
+       {
+        setNotification({ message: 'Our Servers are slow at the moment.\nIn 60 sec we will be Back.', color: 'red' });
+       }
+       
   }
   function toggleTheme(cur_theme) {
 
@@ -60,6 +70,14 @@ function App() {
         <div>
           <RouterProvider router={router}/>
         </div>
+
+        {notification && (
+            <Notification 
+                message={notification.message} 
+                color={notification.color}
+                onClose={() => setNotification(null)} 
+            />
+        )}
     </div>
   );
 }
