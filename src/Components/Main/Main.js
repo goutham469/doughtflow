@@ -43,7 +43,7 @@ function Main() {
           .map((post,idx)=><div className='main-body-child' key={idx}>
                         <center>
                           {
-                            post.bannerImage&&<img src={post.bannerImage}/>
+                            post.bannerImage&&<img style={{width:"300px",borderRadius:"20px"}} src={post.bannerImage}/>
                           }
                         </center>
                         <h2 style={{color:"brown"}} onClick={()=>{navigate('/post' , {state:{post}})}} className='post-title'>{post.title}</h2>
