@@ -18,7 +18,11 @@ export function BodyParser({post:post})
                 post.map((item,idx)=><div className='body-parser'>
                     {
                         item.type == 'p' ?
-                        <p>{item.value}</p>
+                        <div>
+                            {
+                                item.value.split('\n').map((para)=><p>{para}</p>)
+                            }
+                        </div>
                         :
                         item.type == 'b' ?
                         <div>
