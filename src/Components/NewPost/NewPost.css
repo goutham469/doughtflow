@@ -1,45 +1,263 @@
-.main-tab{
-    display: flex;
-    justify-content: space-around;
-}
-.output-console{
-    background-color: var(--background-color-primary);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    width: 45vw;
+/* Enhanced BodyParser Styles */
 
-    height: 70vh;
-    overflow-y: scroll;
-}
-.new-post-title{
-    font-size: 24px;
-    max-width: 500px;
-
-}
-.new-post-bannerImage{
-    width: 300px;
-}
-.editor{
-    background-color: var(--background-color-primary);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    width: 45vw;
-}
-.copy-code-button {
-    position: absolute;
-    top: 10px; /* Aligns to the top */
-    right: 10px; /* Aligns to the right */
-    background-color: #ffffff; /* Adjust button styling */
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.body-parser{
+/* General Layout */
+.body-parser-container {
+    max-width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .body-parser {
     color: var(--text-color);
     text-align: left;
-    padding: 10px;
-}
+    padding: 10px 0;
+    margin-bottom: 1rem;
+  }
+  
+  /* Paragraph styling */
+  .paragraph p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+  }
+  
+  /* Image styling */
+  .image-container {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+  
+  .new-post-image {
+    max-width: 100%;
+    width: auto;
+    max-height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .new-post-image:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Video styling */
+  .video-container {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+  }
+  
+  .content-video {
+    max-width: 100%;
+    width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+  }
+  
+  /* Link styling */
+  .content-link {
+    color: var(--primary-color, #4f46e5);
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .content-link:hover {
+    color: var(--primary-color-dark, #4338ca);
+    text-decoration: underline;
+  }
+  
+  /* List styling */
+  .ordered-list ol,
+  .unordered-list ul {
+    padding-left: 2rem;
+    margin: 1rem 0;
+  }
+  
+  .ordered-list li,
+  .unordered-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  
+  .unordered-list ul {
+    list-style-type: none;
+  }
+  
+  .unordered-list li::before {
+    content: "•";
+    color: var(--primary-color, #4f46e5);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
+  /* Code Block Styling - Enhanced */
+  .code-block-container {
+    margin: 1.5rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background-color: #1e1e1e; /* VS Code-like dark theme */
+  }
+  
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2d2d2d;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #3e3e3e;
+  }
+  
+  .code-language {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: #e0e0e0;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .copy-code-button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .copy-code-button:hover {
+    background-color: #4338ca;
+    transform: translateY(-1px);
+  }
+  
+  .copy-code-button.copied {
+    background-color: #10b981; /* Success green */
+  }
+  
+  .copy-icon {
+    font-size: 1rem;
+  }
+  
+  .code-block {
+    padding: 1rem;
+    margin: 0;
+    overflow-x: auto;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    tab-size: 2;
+  }
+  
+  /* Syntax highlighting - Base colors */
+  .code-block .keyword { color: #569cd6; } /* blue */
+  .code-block .string { color: #ce9178; } /* orange-ish */
+  .code-block .comment { color: #6a9955; } /* green */
+  .code-block .function { color: #dcdcaa; } /* yellow */
+  .code-block .variable { color: #9cdcfe; } /* light blue */
+  .code-block .number { color: #b5cea8; } /* light green */
+  .code-block .operator { color: #d4d4d4; } /* light gray */
+  .code-block .tag { color: #569cd6; } /* blue */
+  .code-block .attribute { color: #9cdcfe; } /* light blue */
+  .code-block .value { color: #ce9178; } /* orange-ish */
+  
+  /* Scrollbar styling for code blocks */
+  .code-block::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+  
+  .code-block::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+  }
+  
+  .code-block::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+  }
+  
+  .code-block::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+  
+  /* Special language-specific hints */
+  .code-language::before {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 1rem;
+  }
+  
+  .code-language[data-lang="javascript"]::before,
+  .code-language[data-lang="js"]::before {
+    content: "JS";
+    color: #f7df1e;
+  }
+  
+  .code-language[data-lang="html"]::before {
+    content: "HTML";
+    color: #e34c26;
+  }
+  
+  .code-language[data-lang="css"]::before {
+    content: "CSS";
+    color: #264de4;
+  }
+  
+  .code-language[data-lang="python"]::before {
+    content: "PY";
+    color: #3776ab;
+  }
+  
+  /* Dark Mode Adjustments */
+  @media (prefers-color-scheme: dark) {
+    .code-block-container {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    
+    .content-video,
+    .new-post-image {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .code-block {
+      font-size: 0.85rem;
+      padding: 0.75rem;
+    }
+    
+    .copy-code-button {
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+    }
+    
+    .content-video {
+      width: 100%;
+    }
+  }
+  
+  /* Animation for copy button */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .copy-code-button.copied {
+    animation: pulse 0.3s ease-in-out;
+  }

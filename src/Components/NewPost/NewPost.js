@@ -23,7 +23,9 @@ function NewPost() {
 
     async function upload_image(event)
     {
-        let data = await addImage(event)
+        let data = await addImage(event);
+        console.log(data);
+
         setPost(prevData=>({...prevData , bannerImage:data}))
     }
     function setBodyChange(data)
