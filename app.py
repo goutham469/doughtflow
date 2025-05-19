@@ -4,6 +4,7 @@ from langchain.vectorstores import Chroma
 from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceEmbeddings
 from flask import Flask, request, jsonify # API needed libraries
+from flask_cors import CORS
 
 import requests
 from langchain.schema import Document
@@ -89,6 +90,7 @@ chain = RetrievalQAWithSourcesChain.from_llm(
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/" , methods=['GET'])
 def root() :
