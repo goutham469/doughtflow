@@ -47,6 +47,20 @@ function Header({queryHandler}) {
         </form>
 
         <div style={{display:"flex",justifyContent:"space-around"}}>
+
+          <div 
+            style={{backgroundColor:"white",padding:"3px",borderRadius:"5px",margin:"5px",color:"black",cursor:"pointer"}}
+            onClick={()=>navigate('/ask-ai')}>
+            <b style={{position:"relative",bottom:"5px",right:"2px"}}>Ask</b>
+            <img
+              src='/ai.png'
+              width="30px"
+              height="30px"
+        
+            />
+          </div>
+
+
           <div className='profile-button' onClick={()=>navigate('/login')}>
             {
               localStorage.getItem('email') ?
@@ -60,6 +74,10 @@ function Header({queryHandler}) {
               </div>
             }
           </div>
+
+          
+
+
           <span className='toggle-theme-icon profile-button'>
             {
                 theme ?

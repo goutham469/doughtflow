@@ -8,6 +8,8 @@ import NewPost from './Components/NewPost/NewPost';
 import PostCard from './Components/Main/PostCard';
 import Master from './Components/Master/Master';
 import Notification from './Utils/ProgressBar';
+import Chatbot from './Components/Chatbot/Chatbot';
+import Post from './Components/Chatbot/Post';
 
 function App() {
   const [websiteCount , setWebsiteCount] = useState()
@@ -60,6 +62,14 @@ function App() {
         {
           path:'post',
           element:<PostCard/>
+        },
+        {
+          path:'ask-ai',
+          element:<Chatbot/>
+        },
+        {
+          path:"ai-post",
+          element:<Post/>
         }
       ]
     }
