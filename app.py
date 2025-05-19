@@ -112,4 +112,6 @@ def add_post() :
   upsert_post(new_post_added)
   return jsonify({"success":True,"message":"post added to LLM ChatBot"})
 
-  
+
+if __name__ == "__main__":
+    app.run( host='0.0.0.0' , port=4002 , debug=True )
