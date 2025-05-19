@@ -1,0 +1,15 @@
+org: goutham469
+app: my-express-app
+service: nodejs-doughtflow-server
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1  # Specify Mumbai region
+
+functions:
+  app:
+    handler: dist/app.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}

@@ -40,7 +40,7 @@ mediaAPI.post('/uploadPostImage',Postupload.single("photo"),async (req,res)=>{
 
     console.log(req.body)
 
-    console.log(req.file);
+    // console.log(req.file);
     res.send({"status":true,"file":req.file})
 })
 
