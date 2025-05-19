@@ -10,7 +10,8 @@ from langchain.schema import Document
 
 # cell - 2
 
-embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
+# embedding_function = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
+embedding_function = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
 vectordb = Chroma(
     collection_name="blog_posts",
